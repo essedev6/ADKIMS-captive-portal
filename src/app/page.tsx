@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { WifiIcon } from '@heroicons/react/24/solid';
 import PaymentModal from './components/PaymentModal';
+import LoadingScreen from './components/LoadingScreen';
+import { useInView } from 'react-intersection-observer';
 
 interface Plan {
   id: string;
@@ -26,11 +28,27 @@ export default function Home() {
   const [selectedPlan, setSelectedPlan] = useState<string>();
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleBuyNow = (planId: string, amount: number) => {
     setSelectedPlan(planId);
     setSelectedAmount(amount);
     setIsPaymentModalOpen(true);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen />;
   };
 
   return (
@@ -40,7 +58,7 @@ export default function Home() {
       <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full filter blur-[128px] opacity-20 -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-[128px] opacity-20 translate-x-1/2 translate-y-1/2" />
 
-      <div className="max-w-7xl mx-auto relative">
+      <div ref={ref} className="max-w-7xl mx-auto relative">
         <div className="flex items-center gap-3 mb-12">
           <div className="bg-blue-500/20 p-3 rounded-lg">
             <WifiIcon className="h-8 w-8 text-blue-400" />
@@ -50,7 +68,7 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transform transition-opacity duration-500 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {plans.map((plan) => (
             <div
               key={plan.id}
