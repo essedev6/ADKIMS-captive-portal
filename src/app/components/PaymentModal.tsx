@@ -28,7 +28,7 @@ export default function PaymentModal({
     return /^2547\d{8}$/.test(formattedPhone);
   };
 
-  const formatResponse = (data: any) => {
+  const formatResponse = (data: { success?: boolean; error?: string | { message: string } }) => {
     if (data.success) {
       return '✅ Payment request sent successfully! Check your phone for the M-Pesa prompt.';
     } else if (data.error) {
