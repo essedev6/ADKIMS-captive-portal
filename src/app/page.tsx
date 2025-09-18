@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { WifiIcon } from '@heroicons/react/24/solid';
 import PaymentModal from './components/PaymentModal';
 import LoadingScreen from './components/LoadingScreen';
+import Footer from './components/Footer';
 import { useInView } from 'react-intersection-observer';
 
 interface Plan {
@@ -64,7 +65,7 @@ export default function Home() {
             <WifiIcon className="h-8 w-8 text-blue-400" />
           </div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-            ADKIMS HOTSPOT
+            WASHI  HOTSPOT
           </h1>
         </div>
 
@@ -102,6 +103,8 @@ export default function Home() {
           amount={selectedAmount}
         />
       </div>
+
+      <Footer />
     </main>
   );
 }

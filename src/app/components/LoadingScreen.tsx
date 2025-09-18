@@ -13,7 +13,7 @@ export default function LoadingScreen() {
           <WifiIcon className="h-12 w-12 text-blue-400" />
         </div>
         <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-          ADKIMS HOTSPOT
+          ADKIMS SYSTEMS
         </h1>
         <div className="mt-4 flex space-x-2">
           <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />

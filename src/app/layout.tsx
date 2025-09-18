@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ADKIMS HOTSPOT",
+  title: "ADKIMS HOTSPOT ",
   description: "ADKIMS HOTSPOT is a hotspot service that provides internet access to users.",
   viewport: {
     width: 'device-width',
