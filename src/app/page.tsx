@@ -65,7 +65,7 @@ export default function Home() {
             <WifiIcon className="h-8 w-8 text-blue-400" />
           </div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-            WOSHI  HOTSPOT
+            ADKIMS HOTSPOT
           </h1>
         </div>
 
