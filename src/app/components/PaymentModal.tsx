@@ -25,7 +25,7 @@ export default function PaymentModal({
 
   const validatePhone = (phone: string) => {
     const formattedPhone = sanitizePhone(phone);
-    return /^2547\d{8}$/.test(formattedPhone);
+    return /^(2547\d{8}|2541\d{8})$/.test(formattedPhone);
   };
 
   const formatResponse = (data: { success?: boolean; error?: string | { message: string } }) => {
@@ -102,7 +102,7 @@ export default function PaymentModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-                  pattern="^2547\d{8}$"
+                  pattern="^(2547\d{8}|2541\d{8})$"
                 />
                 <small className="text-xs text-gray-500 mt-1 block">
                   Format: 254XXXXXXXXX (e.g. 254712345678)
